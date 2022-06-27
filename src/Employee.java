@@ -7,16 +7,10 @@ public class Employee {
 
 
     public Employee(String fullName, int department, int salary) {
-        this.id = id++;
         this.fullName = fullName;
         this.department = department;
         this.salary = salary;
-        this.id = getCounter();
-        counter++;
-    }
-
-    public int getCounter() {
-        return counter;
+        this.id = counter++;
     }
 
     public String getFullName() {

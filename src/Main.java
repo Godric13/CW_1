@@ -1,6 +1,6 @@
 public class Main {
+    private static final Employee[] employees = new Employee[10];
     public static void main(String[] args) {
-        Employee[] employees = new Employee[10];
         employees[0] = new Employee("ABC", 1, 100_000);
         employees[1] = new Employee("DEF", 1, 200_000);
         employees[2] = new Employee("GHI", 2, 300_000);
@@ -11,58 +11,60 @@ public class Main {
         employees[7] = new Employee("VWX", 4, 700_000);
         employees[8] = new Employee("YZA", 5, 900_000);
         employees[9] = new Employee("BCD", 5, 1100_000);
-        printAllEmployee(employees);
-        minSallary(employees);
-        maxSallary(employees);
-        summSalary(employees);
-        avergeSallary(employees);
-        printAllNameEmployee(employees);
+        printAllEmployees();
+        minSallary();
+        maxSallary();
+        printSumSalary();
+        avergeSallary();
+        printAllNameEmployee();
 
     }
 
-    public static void printAllEmployee(Employee[] employees) {
+    private static void printAllEmployees() {
         for (Employee employee : employees) {
             System.out.println(employee);
         }
     }
 
-    public static void minSallary(Employee[] employees) {
+    private static void maxSallary() {
         Employee a = employees[0];
         for (Employee employee : employees) {
             if (a.getSalary() < employee.getSalary()) {
                 a = employee;
             }
         }
-        System.out.println("Минимальная ЗП " + a.getSalary());
+        System.out.println("Максимальная ЗП " + a.getSalary());
     }
 
-    public static void maxSallary(Employee[] employees) {
+    private static void minSallary() {
         Employee a = employees[0];
         for (Employee employee : employees) {
             if (a.getSalary() > employee.getSalary()) {
                 a = employee;
             }
         }
-        System.out.println("Максимальная ЗП " + a.getSalary());
+        System.out.println("Минимальная ЗП " + a.getSalary());
     }
 
-    public static int summSalary(Employee[] employees) {
+    private static int summSalary() {
         int a = 0;
         for (Employee employee : employees) {
             a = a + employee.getSalary();
         }
-        System.out.println("Суммарная ЗП " + a);
         return a;
     }
 
-    public static void avergeSallary(Employee[] employees) {
-        int a = summSalary(employees);
-        int aveetge = a / employees.length;
-        System.out.println("Средняя ЗП " + aveetge);
-
+    private static void printSumSalary() {
+        int a = summSalary();
+        System.out.println("Суммарная ЗП " + a);
     }
 
-    public static void printAllNameEmployee(Employee[] employees) {
+    private static void avergeSallary() {
+        double aveetge = ((double) summSalary() / employees.length);
+        System.out.println("Средняя ЗП " + aveetge);
+    }
+
+    private static void printAllNameEmployee() {
         for (Employee employee : employees) {
             System.out.println(employee.getFullName());
         }
